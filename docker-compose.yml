@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: spasample_php
+    volumes:
+      - .:/var/www
+      - ./apache-config:/etc/apache2/sites-available
+      - vendor-volumes:/var/www/vendor:delegated               #仮想サーバ側のみにファイル出力する設定
+      - public-vendor-volumes:/var/www/public/vendor:delegated #仮想サーバ側のみにファイル出力する設定
+      - public-build-volumes:/var/www/public/build:delegated   #仮想サーバ側のみにファイル出力する設定
+    ports:
+      - "40614:80"
+      - "5173:5173"  # Viteの開発サーバーポートを追加
+    networks:
+      - web
+
+  db:
+    image: mysql:latest
+    container_name: spasample_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
+      MYSQL_DATABASE: spasample
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - web
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: spasample_phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
+    ports:
+      - "8081:80"
+    networks:
+      - web
+      
+volumes:
+  db_data:
+  vendor-volumes:         #仮想サーバ側のみにファイル出力する設定
+  public-vendor-volumes:  #仮想サーバ側のみにファイル出力する設定
+  public-build-volumes:   #仮想サーバ側のみにファイル出力する設定
+
+networks:
+  web:
+    driver: bridge
