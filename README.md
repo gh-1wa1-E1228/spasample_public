@@ -65,43 +65,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-##.envファイルについて
+## .envファイルについて
 ローカル環境では.env.localをコピーして.envファイルを作成してください。
 ※.envファイル自体はpushしないこと
 
-##ローカル環境のURL
+## ローカル環境のURL
 http://localhost:40614/vuejs
 http://localhost:40614/react
 
-##管理画面
+## 管理画面
 http://localhost:40614/admin
 
-##ローカル環境のphpmyadminのURL
+## ローカル環境のphpmyadminのURL
 http://localhost:8081/
 
-#dockerビルド
+## dockerビルド
 docker-compose up -d
 
-##dockerコンテナ内に入る(カレントディレクトリ/var/www、この中にlaravelソース一式が入っている)
+## dockerコンテナ内に入る(カレントディレクトリ/var/www、この中にlaravelソース一式が入っている)
 docker exec -it spasample_php bash
 
-##初回起動
+## 初回起動
 composer install
 
-##初回起動npm
+## 初回起動npm
 npm install
 
-##DBテーブル構築
+## DBテーブル構築
 php artisan migrate
 
-##DBテストデータ作成
+## DBテストデータ作成
 php artisan db:seed
 
-##viteの開発モードの起動(自動ビルド)
+## viteの開発モードの起動(自動ビルド)
 npm run dev
 
-##ビルド（本番用）
+## ビルド（本番用）
 npm run build
 
-##dockerの停止
+## dockerの停止
 docker-compose down
