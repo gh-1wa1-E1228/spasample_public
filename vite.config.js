@@ -9,10 +9,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
-                'resources/js/app.ts',
+                'resources/admin/sass/app.scss',
+                'resources/admin/js/app.ts',
             ],
-            refresh: true,
+            refresh: true, // laravelアプリケーションの変更を反映するフラグ
         }),
         vue(),
     ],
@@ -28,7 +28,7 @@ export default defineConfig({
     },
     server: {
         host: true,  // Dockerコンテナ内でホストされるように設定
-        port: 5173,       // 必要に応じてポート番号を変更
+        port: 5173,  // 必要に応じてポート番号を変更
         hmr: {
             host: 'localhost',
             port: 5173,

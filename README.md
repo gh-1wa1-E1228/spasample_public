@@ -97,6 +97,9 @@ php artisan migrate
 ## DBテストデータ作成
 php artisan db:seed
 
+## Admin-lTEのセットアップ
+php artisan adminlte:update
+
 ## viteの開発モードの起動(自動ビルド)
 npm run dev
 
