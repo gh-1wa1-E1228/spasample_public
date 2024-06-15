@@ -8,7 +8,7 @@ services:
       - .:/var/www
       - ./apache-config:/etc/apache2/sites-available
       - vendor-volumes:/var/www/vendor:delegated               #仮想サーバ側のみにファイル出力する設定
-      - public-vendor-volumes:/var/www/public/vendor:delegated #仮想サーバ側のみにファイル出力する設定
+      - storage-framework-volumes:/var/www/storage/framework:delegated               #仮想サーバ側のみにファイル出力する設定
       - public-build-volumes:/var/www/public/build:delegated   #仮想サーバ側のみにファイル出力する設定
     ports:
       - "40614:80"
@@ -47,10 +47,9 @@ services:
       
 volumes:
   db_data:
-  vendor-volumes:         #仮想サーバ側のみにファイル出力する設定
-  public-vendor-volumes:  #仮想サーバ側のみにファイル出力する設定
-  public-build-volumes:   #仮想サーバ側のみにファイル出力する設定
-
+  vendor-volumes:             #仮想サーバ側のみにファイル出力する設定
+  public-build-volumes:       #仮想サーバ側のみにファイル出力する設定
+  storage-framework-volumes:  #仮想サーバ側のみにファイル出力する設定
 networks:
   web:
     driver: bridge

@@ -36,13 +36,21 @@ COPY ./apache-config/localhost.conf /etc/apache2/sites-available/localhost.conf
 RUN a2ensite localhost.conf && a2enmod rewrite
 
 # ソースコードのコピー
-#COPY . /var/www
+COPY . /var/www
 
 # 作業ディレクトリの設定
 WORKDIR /var/www
 
 # パーミッションの設定
+RUN mkdir -p /var/www/storage/framework/cache
+RUN mkdir -p /var/www/storage/framework/cache/data
+RUN mkdir -p /var/www/storage/framework/sessions
+RUN mkdir -p /var/www/storage/framework/testing
+RUN mkdir -p /var/www/storage/framework/views
+RUN chmod -R 775 /var/www/storage/framework
+RUN chown -R www-data:www-data /var/www/storage/framework
 RUN chown -R www-data:www-data /var/www
+
 
 # ポートの公開
 EXPOSE 80
