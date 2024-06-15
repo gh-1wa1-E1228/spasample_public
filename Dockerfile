@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN apt-get install -y git
-RUN apt-get install -y php-zip
 RUN apt-get install -y unzip
 
 # Node.jsとnpmのインストール

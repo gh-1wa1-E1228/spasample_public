@@ -17,13 +17,16 @@ services:
       - web
 
   db:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: spasample_db
+    command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
       MYSQL_DATABASE: spasample
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: AYH4AZRptMxF
+      MYSQL_USER: mwCys5btckJ
+      MYSQL_PASSWORD: AYH4AZRptMxF
+      TZ: 'Asia/Tokyo'
     ports:
       - "3306:3306"
     volumes:
@@ -36,7 +39,7 @@ services:
     container_name: spasample_phpmyadmin
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: 2Km/Mh2H+TGUtk8%(%Cc
+      MYSQL_ROOT_PASSWORD: AYH4AZRptMxF
     ports:
       - "8081:80"
     networks:
